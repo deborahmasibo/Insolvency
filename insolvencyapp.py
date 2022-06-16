@@ -1,3 +1,4 @@
+from calendar import c
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -13,14 +14,16 @@ st.set_page_config(page_title = "Insolvency", page_icon =
 st.markdown("##")
 
 #---------------------------------------------------------------------------------------------------------------#
-#                                                 SIDEBAR SETTINGS                                               #
+#                                                 SIDEBAR SETTINS                                               #
 #---------------------------------------------------------------------------------------------------------------#
 
 # Sidebar population
 # sBox = st.sidebar.selectbox("Menu", ["Home","Manual Entry","Load Data"])
+
 with st.sidebar:
     sBox = option_menu(menu_title= 'Menu', options=['Home','Load Data', 'Manual Entry'], 
     icons =['house','book','boxes'],menu_icon='cast', default_index=1)
+
 
 #----------------------------------------- Sidebar options configuration ----------------------------------------
 
@@ -39,13 +42,35 @@ def PageSpecifications(sBox):
         # Adding spaces between the header and image
         st.write()
         st.write()
-        #st.title("Cryptocurrency Performance Index")
-        imagemain = Image.open("bg1.jpeg")
-        st.image(imagemain, caption="Insolvency", width =1000)
-        st.markdown("##")
-      
-        #with col3:
-        #    st.write("")
+        c1,c2,c3 = st.columns([1,5,1])
+
+        with c1:
+            st.write()
+        with c2:
+
+            imagemain = Image.open("bg1.jpeg")
+            st.image(imagemain, caption="Insolvency", width =750)
+            st.markdown("##")
+        with c3:
+            st.write('')
+
+        c1,c2,c3 = st.columns([1,5,1])
+        with c1:
+            st.write('')
+        with c2:
+            st.markdown('''*An organization's ability to learn, and translate that learning into an action
+            rapidly, is the ultimate competitive advantage.*''')
+        with c3:
+            st.write('')
+        
+
+        c1,c2,c3 = st.columns([3,5,1])
+        with c1:
+            st.write('')
+        with c2:
+            st.markdown('''*Jack Welch (Former CEO of General Electric)*''')
+        with c3:
+            st.write('')
 
 
     elif sBox == 'Manual Entry':
@@ -82,6 +107,8 @@ def PageSpecifications(sBox):
             # col8 = st.slider('ROA(C) before interest and depreciation before interest',  0.1,1.0,0.5)
             # col9 = st.slider('Current Liabilities/Equity',  0.1,1.0,0.5)
             # col10 = st.slider('Borrowing dependency',  0.1,1.0,0.5)
+             
+            
 
 
         if st.button('Predict'):
