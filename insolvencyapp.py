@@ -54,7 +54,7 @@ def PageSpecifications(sBox):
         st.write('')
         st.markdown("<h5 style='text-align: left; color: black;'> Input Values</h5>", unsafe_allow_html=True)
 
-               c1, c2, c3, c4,c5 = st.columns([3,3,3,3,3])
+        c1, c2, c3, c4,c5 = st.columns([3,3,3,3,3])
         with c1:
             col1 = st.number_input('Current Liability to Equity', 0.0, 1.0)
             col2 = st.number_input('ROA(B) before interest and depreciation after tax', 0.0, 1.0)
