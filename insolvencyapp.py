@@ -114,8 +114,22 @@ def PageSpecifications(sBox):
         if st.button('Predict'):
             # Prediction
             result = Prediction([[col1,col2,col3,col4,col5,col6,col7,col8,col9,col10]])
+            classes = []
+            for value in result:
+                if value == 0:
+                    classes.append('At risk')
+                elif value == 1:
+                    classes.append('Potential risk')
+                elif value == 2:
+                    classes.append('Branrupt')
+                elif value == 3:
+                    classes.append('Stable Performance')
+            
             st.markdown("<h5 style='text-align: left; color: black;'> Prediction </h5>", unsafe_allow_html=True)
-            st.success('Prediction = {}'.format(result))
+            st.success('Prediction= {}'.format(classes[0]))
+
+                # unique = np.unique(result)
+                # unique = np.unique(classes)
 
     #----------------------------------------------------------------------------------------------------------------#
     #                                               LOAD DATA                                                        #
@@ -133,16 +147,26 @@ def PageSpecifications(sBox):
                 data_pred = data.iloc[: ,1:].values
                 data_pred = list(data_pred)
                 result = Prediction(data_pred)
-                unique = np.unique(result)
-                st.markdown("<h5 style='text-align: left; color: black;'> Prediction </h5>", unsafe_allow_html=True)
-                st.success('Classes Detected = {}'.format(unique))
+                classes = []
+                for value in result:
+                    if value == 0:
+                        classes.append('At risk')
+                    elif value == 1:
+                        classes.append('Potential risk')
+                    elif value == 2:
+                        classes.append('Branrupt')
+                    elif value == 3:
+                        classes.append('Stable Performance')
+
+                # unique = np.unique(result)
+                # unique = np.unique(classes)
 
                 data.columns = ['Net profit before tax/Paid-in capital', 'ROA(C) before interest and depreciation before interest',
                  'Liability to Equity', 'Current Liabilities/Equity', 'Borrowing dependency', 'Current Liability to Equity',
                  'ROA(B) before interest and depreciation after tax', 'Persistent EPS in the Last Four Seasons', 
                  'Inventory and accounts receivable/Net value', 'ROA(A) before interest and \% after tax', 'Clusters']
 
-                data['Classification'] = result
+                data['Classification'] = classes
                 data.to_csv('results.csv')
                 st.write('')
                 with open('results.csv') as f:
