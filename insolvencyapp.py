@@ -13,7 +13,7 @@ st.set_page_config(page_title = "Insolvency", page_icon =
 st.markdown("##")
 
 #---------------------------------------------------------------------------------------------------------------#
-#                                                 SIDEBAR SETTINS                                               #
+#                                                 SIDEBAR SETTINGS                                               #
 #---------------------------------------------------------------------------------------------------------------#
 
 # Sidebar population
@@ -54,23 +54,34 @@ def PageSpecifications(sBox):
         st.write('')
         st.markdown("<h5 style='text-align: left; color: black;'> Input Values</h5>", unsafe_allow_html=True)
 
-        c1, c2, c3 = st.columns([3,3,3])
+               c1, c2, c3, c4,c5 = st.columns([3,3,3,3,3])
         with c1:
-            col1 = st.number_input('Current Liability to Equity')
-            col2 = st.number_input('ROA(B) before interest and depreciation after tax')
-            col3 = st.number_input('Net profit before tax/Paid-in capital')
-            col4 = st.number_input('Inventory and accounts receivable/Net value')
-            
+            col1 = st.number_input('Current Liability to Equity', 0.0, 1.0)
+            col2 = st.number_input('ROA(B) before interest and depreciation after tax', 0.0, 1.0)
+            col3 = st.number_input('Net profit before tax/Paid-in capital', 0.0, 1.0)
+            col4 = st.number_input('Inventory and accounts receivable/Net value', 0.0, 1.0)
+            # col1 = st.slider('Current Liability to Equity', 0.1,1.0,0.5)
+            # col2 = st.slider('ROA(B) before interest and depreciation after tax',  0.1,1.0,0.5)
+            # col3 = st.slider('Net profit before tax/Paid-in capital',  0.1,1.0,0.5)
+            # col4 = st.slider('Inventory and accounts receivable/Net value',  0.1,1.0,0.5)
         with c2:
-            col5 = st.number_input('ROA(A) before interest and \% after tax') 
-            col6 = st.number_input('Liability to Equity')
-            col7 = st.number_input('Persistent EPS in the Last Four Seasons')
-
-        with c3:             
-            
-            col8 = st.number_input('ROA(C) before interest and depreciation before interest')
-            col9 = st.number_input('Current Liabilities/Equity')
-            col10 = st.number_input('Borrowing dependency')
+            st.write('')
+        with c3:
+            col5 = st.number_input('ROA(A) before interest and \% after tax', 0.0, 1.0) 
+            col6 = st.number_input('Liability to Equity', 0.0, 1.0)
+            col7 = st.number_input('Persistent EPS in the Last Four Seasons', 0.0, 1.0)
+            # col5 = st.slider('ROA(A) before interest and \% after tax',  0.1,1.0,0.5)
+            # col6 = st.slider('Liability to Equity',  0.1,1.0,0.5)
+            # col7 = st.slider('Persistent EPS in the Last Four Seasons',  0.1,1.0,0.5)
+        with c4:             
+            st.write('')
+        with c5:
+            col8 = st.number_input('ROA(C) before interest and depreciation before interest', 0.0, 1.0)
+            col9 = st.number_input('Current Liabilities/Equity', 0.0, 1.0)
+            col10 = st.number_input('Borrowing dependency', 0.0, 1.0)
+            # col8 = st.slider('ROA(C) before interest and depreciation before interest',  0.1,1.0,0.5)
+            # col9 = st.slider('Current Liabilities/Equity',  0.1,1.0,0.5)
+            # col10 = st.slider('Borrowing dependency',  0.1,1.0,0.5)
 
 
         if st.button('Predict'):
