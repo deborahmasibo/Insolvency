@@ -5,6 +5,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 from PIL import Image
 from classification import Prediction
+from streamlit_option_menu import option_menu
 
 # Setting page configuration
 st.set_page_config(page_title = "Insolvency", page_icon = 
@@ -16,7 +17,10 @@ st.markdown("##")
 #---------------------------------------------------------------------------------------------------------------#
 
 # Sidebar population
-sBox = st.sidebar.selectbox("Menu", ["Home","Manual Entry","Load Data"])
+# sBox = st.sidebar.selectbox("Menu", ["Home","Manual Entry","Load Data"])
+with st.sidebar:
+    sBox = option_menu(menu_title= 'Menu', options=['Home','Load Data', 'Manual Entry'], 
+    icons =['house','book','boxes'],menu_icon='cast', default_index=1)
 
 #----------------------------------------- Sidebar options configuration ----------------------------------------
 
